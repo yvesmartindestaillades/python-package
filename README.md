@@ -1,2 +1,2 @@
 # python-package
-A template for python packages
+A boilerplate for python packages

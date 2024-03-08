@@ -1,11 +1,11 @@
 VERSION := $(shell git describe --always --dirty --long)
-PYPI_PASSWORD := $(shell cat ~/.pypi_pass.txt)
+PYPI_TOKEN := $(shell cat ~/.pypi_token.txt)
 
 default: 
 	python setup.py install
 
-pytest:
-	pytest test -v
+test:
+	pytest . -v
 
 init:
 	pip install -r requirements.txt
@@ -13,5 +13,5 @@ init:
 push_to_pypi:
 	rm -fr dist
 	python3 -m build
-	twine upload -r pypi dist/* --user yvesmartindestaillades --password $(PYPI_PASSWORD)
+	twine upload -r pypi dist/* --user __token__ --password $(PYPI_TOKEN)
 	rm -fr dist
